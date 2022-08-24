@@ -8,34 +8,55 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Reflection;
 using System.Windows.Forms;
 using WUApiLib;
 
-/*
-V1.0.0
- - Aplicacion para configurar equipos de computo nuevos.
-
-*/
 namespace ConfigurarEq
 {
     public partial class Form1 : Form
     {
-        private String versiontext = "1.0.0";
-        private String version = "fb598a3878e263d369925b9ceb4f4ee8044ececd";
+        private String versiontext = "1.0.2";
+        private String version = "ca3ba73d1f3b739776fbf00c5b0d0aa508d62752";
+        /*
+V1.0.2
+- Se agrega numero economico.
+V1.0.0
+ - Aplicacion para configurar equipos de computo nuevos.
+
+        */
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        public static String path_log_errores = Application.StartupPath + @"\ConfEq_Errores.log";
-        public static String path_log = Application.StartupPath + @"\ConfEq.log";
+        public static String path_log_errores = Path.GetTempPath() + @"\ConfEq_Errores.log";
+        public static String path_log = Path.GetTempPath() + @"\ConfEq.log";
         public static String Carpeta_Instalar = Application.StartupPath + "\\Instalar";
         static Rutas Rutas = new Rutas();
         private static Boolean permitir_cerrar = true;
+        private static Boolean eliminar_programa = false;
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            if(File.Exists(path_log_errores))
+            DriveInfo driveInfo = null;
+            try
+            {
+                driveInfo = new DriveInfo(Path.GetPathRoot(Assembly.GetEntryAssembly().Location));
+            }
+            catch (Exception)
+            {
+            }
+
+            if (driveInfo == null || driveInfo.DriveType == DriveType.Network)
+            {
+                MessageBox.Show("No se puede ejecutar programa en red.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+
+
+            if (File.Exists(path_log_errores))
             {
                 File.Delete(path_log_errores);
             }
@@ -89,7 +110,7 @@ namespace ConfigurarEq
                 {
                     lista_correo_collection.Add(n[2]);
                 }
-                correo.AutoCompleteCustomSource = lista_correo_collection;
+                //correo.AutoCompleteCustomSource = lista_correo_collection;
             }
 
         }
@@ -109,14 +130,14 @@ namespace ConfigurarEq
                         if (nwReader2["valor"].ToString() != version)
                         {
                             MessageBox.Show("No se puede inciar sesion porque hay una nueva version.\n\nNueva Version: " + nwReader2["version"].ToString() + "\nVersion actual: " + versiontext + "\n\nEl programa se cerrara.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            System.Windows.Forms.Application.Exit();
+                            Application.Exit();
                             return;
                         }
                     }
                     else
                     {
                         MessageBox.Show("No se puedo verificar la version del programa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        System.Windows.Forms.Application.Exit();
+                        Application.Exit();
                         return;
                     }
                 }
@@ -124,7 +145,7 @@ namespace ConfigurarEq
             catch (Exception ex)
             {
                 MessageBox.Show("Error en validar la version del programa\n\nMensaje: " + ex.Message, "Información del Equipo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                System.Windows.Forms.Application.Exit();
+                Application.Exit();
                 return;
             }
         }
@@ -140,6 +161,7 @@ namespace ConfigurarEq
         {
             AutoCompletar_Empleado();
             Recargar_Lista_Programas();
+            economico.Text = InfEq.Activo;
             this.Enabled = true;
             usuario.Focus();
         }
@@ -206,6 +228,7 @@ namespace ConfigurarEq
                 return;
             }
 
+            eliminar_programa = false;
             permitir_cerrar = false;
             if (configurando.IsBusy != true)
             {
@@ -254,6 +277,32 @@ namespace ConfigurarEq
 
         private void configurando_DoWork(object sender, DoWorkEventArgs e)
         {
+            #region CAMBIANDO OPCINES DE ENERGIA
+            Process p_energia = new Process();
+            p_energia.StartInfo.RedirectStandardOutput = true;
+            p_energia.StartInfo.RedirectStandardError = true;
+            p_energia.StartInfo.UseShellExecute = false;
+
+            p_energia.StartInfo.FileName = "powercfg";
+
+            String[] args = { "monitor-timeout-ac", "monitor-timeout-dc", "standby-timeout-ac", "standby-timeout-dc" };
+
+            foreach (String arg in args)
+            {
+                p_energia.StartInfo.Arguments = $"/change {arg} 0";
+                p_energia.Start();
+
+                string error_energia = p_energia.StandardError.ReadToEnd();
+                p_energia.WaitForExit();
+
+                if (p_energia.ExitCode == 1)
+                {
+                    log("Error al cambiar el plan de energia: " + error_energia);
+                    break;
+                }
+            }
+            #endregion
+
             CopiarArchivos copiar_archivo = new CopiarArchivos();
 
             #region INSTALANDO PROGRAMAS
@@ -307,10 +356,6 @@ namespace ConfigurarEq
                 if (radio_correctivo.Checked == true)
                 {
                     mantto = 1;
-                }
-                if (radio_preventivo.Checked == true)
-                {
-                    mantto = 2;
                 }
                 if (radio_equiponuevo.Checked == true)
                 {
@@ -501,7 +546,7 @@ namespace ConfigurarEq
                     p_configkaspersky.StartInfo.RedirectStandardError = true;
                     p_configkaspersky.StartInfo.UseShellExecute = false;
 
-                    p_configkaspersky.StartInfo.FileName = @"C:\Program Files (x86)\Kaspersky Lab\Kaspersky Endpoint Security for Windows\avp.com";
+                    p_configkaspersky.StartInfo.FileName = @"C:\Program Files (x86)\Kaspersky Lab\KES.11.10.0\avp.com";
                     p_configkaspersky.StartInfo.Arguments = "IMPORT \"" + Rutas.Kaspersky_Config + "\" /login=UNNE /password=Unne*1234";
                     p_configkaspersky.Start();
 
@@ -537,7 +582,7 @@ namespace ConfigurarEq
                     p_licenciakaspersky.StartInfo.RedirectStandardError = true;
                     p_licenciakaspersky.StartInfo.UseShellExecute = false;
 
-                    p_licenciakaspersky.StartInfo.FileName = @"C:\Program Files (x86)\Kaspersky Lab\Kaspersky Endpoint Security for Windows\avp.com";
+                    p_licenciakaspersky.StartInfo.FileName = @"C:\Program Files (x86)\Kaspersky Lab\KES.11.10.0\avp.com";
                     p_licenciakaspersky.StartInfo.Arguments = "license /ADD \"" + Rutas.Kaspersky_Licencia + "\"";
                     p_licenciakaspersky.Start();
 
@@ -568,7 +613,7 @@ namespace ConfigurarEq
                 {
                     txt_instalando.BeginInvoke(new System.Action(() => { txt_instalando.Text = "Actualizando Kaspersky"; }));
                     richTextBox1.BeginInvoke(new System.Action(() => { richTextBox1.Visible = true; }));
-                    CMD("\"C:\\Program Files (x86)\\Kaspersky Lab\\Kaspersky Endpoint Security for Windows\\avp.com\" UPDATE");
+                    CMD("\"C:\\Program Files (x86)\\Kaspersky Lab\\KES.11.10.0\\avp.com\" UPDATE");
                     richTextBox1.BeginInvoke(new System.Action(() => { richTextBox1.Visible = false; }));
                     log("Kaspersky, actualizado correctamente.");
                 }
@@ -699,18 +744,8 @@ namespace ConfigurarEq
             #region ELIMINAR CARPETA AL TERMINAR
             if (check_eliminarcarpeta.Checked == true)
             {
-                try
-                {
-                    if (Directory.Exists(Application.StartupPath + "\\Instalar"))
-                    {
-                        Directory.Delete(Application.StartupPath + "\\Instalar", true);
-                        log("Carpeta de instalacion eliminada.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    log("Error al eliminar carpeta de instalacion: "+ex.Message, true);
-                }
+                log("El programa se eliminara al cerrarlo");
+                eliminar_programa = true;
             }
             #endregion
 
@@ -760,6 +795,8 @@ namespace ConfigurarEq
             panel_txtbox.Enabled = true;
 
             permitir_cerrar = true;
+
+            Application.Exit();
         }
         
         private void CMD(String command)
@@ -798,16 +835,6 @@ namespace ConfigurarEq
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (permitir_cerrar == false)
-            {
-                switch (e.CloseReason)
-                {
-                    case CloseReason.UserClosing:
-                        e.Cancel = true;
-                        MessageBox.Show("No se puede cerrar la aplicacion mientras este configurando.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                }
-            }
             if (File.Exists(path_log))
             {
                 File.Delete(path_log);
@@ -815,6 +842,25 @@ namespace ConfigurarEq
             if (File.Exists(path_log_errores))
             {
                 File.Delete(path_log_errores);
+            }
+
+            if(eliminar_programa==true)
+            {
+                Process.Start(new ProcessStartInfo()
+                {
+                    Arguments = "/C choice /C Y /N /D Y /T 2 & Del \"" + Application.ExecutablePath + "\"",
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    CreateNoWindow = true,
+                    FileName = "cmd.exe"
+                }); 
+                
+                Process.Start(new ProcessStartInfo()
+                {
+                    Arguments = "/C choice /C Y /N /D Y /T 2 & rmdir /S /Q \"" + Carpeta_Instalar + "\"",
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    CreateNoWindow = true,
+                    FileName = "cmd.exe"
+                }); 
             }
         }
 
@@ -833,7 +879,7 @@ namespace ConfigurarEq
             check_accesosoffice.Checked = false;
             check_eliminarcarpeta.Checked = false;
             check_cambiarnombreequipo.Checked = false;
-            check_infeq.Checked = false;   
+            check_infeq.Checked = false;
 
             int celda = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)

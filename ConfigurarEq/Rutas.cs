@@ -19,40 +19,48 @@ namespace ConfigurarEq
 
         public Rutas()
         {
-            using (SqlConnection conexion2 = new SqlConnection(Datos.conexionsql_infeq))
+            try
             {
-                conexion2.Open();
-                String sql2 = "SELECT * FROM ConfEq_rutas";
-                SqlCommand comm2 = new SqlCommand(sql2, conexion2);
-                SqlDataReader nwReader2 = comm2.ExecuteReader();
-
-
-                while (nwReader2.Read())
+                using (SqlConnection conexion2 = new SqlConnection(Datos.conexionsql_infeq))
                 {
-                    String ruta = nwReader2["ruta"].ToString().Replace("$path", Application.StartupPath);
+                    conexion2.Open();
+                    String sql2 = "SELECT * FROM ConfEq_rutas";
+                    SqlCommand comm2 = new SqlCommand(sql2, conexion2);
+                    SqlDataReader nwReader2 = comm2.ExecuteReader();
 
-                    switch (nwReader2["comentario"].ToString().ToUpper())
+
+                    while (nwReader2.Read())
                     {
-                        case "CERTIFICADO":
-                            Certificado = ruta;
-                            break;
-                        case "FONDO DE PANTALLA":
-                            FondoDePantalla = ruta;
-                            break;
-                        case "TASKBAND":
-                            TaskBand = ruta;
-                            break;
-                        case "KASPERSKY CONFIG":
-                            Kaspersky_Config = ruta;
-                            break;
-                        case "KASPERSKY LICENCIA":
-                            Kaspersky_Licencia = ruta;
-                            break;
-                        case "OFFICE LICENCIA":
-                            Office_Licencia = ruta;
-                            break;
+                        String ruta = nwReader2["ruta"].ToString().Replace("$path", Application.StartupPath);
+
+                        switch (nwReader2["comentario"].ToString().ToUpper())
+                        {
+                            case "CERTIFICADO":
+                                Certificado = ruta;
+                                break;
+                            case "FONDO DE PANTALLA":
+                                FondoDePantalla = ruta;
+                                break;
+                            case "TASKBAND":
+                                TaskBand = ruta;
+                                break;
+                            case "KASPERSKY CONFIG":
+                                Kaspersky_Config = ruta;
+                                break;
+                            case "KASPERSKY LICENCIA":
+                                Kaspersky_Licencia = ruta;
+                                break;
+                            case "OFFICE LICENCIA":
+                                Office_Licencia = ruta;
+                                break;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar las rutas en la base de datos.\n\nERROR: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
     }

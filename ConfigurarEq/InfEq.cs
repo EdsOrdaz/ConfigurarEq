@@ -326,7 +326,7 @@ namespace ConfigurarEq
 
                     SqlCommand insertar = new SqlCommand(sqlIns, conexion);
                     insertar.Parameters.Add("@uid", 1); // Usuario Edson Ordaz
-                    insertar.Parameters.Add("@name", NombrePC); // Usuario Edson Ordaz
+                    insertar.Parameters.Add("@name", NombrePC); 
                     insertar.Parameters.Add("@marca", Marca);
                     insertar.Parameters.Add("@modelo", Modelo);
                     insertar.Parameters.Add("@usuario", NombrePC + "\\" + usuario_word[1]);

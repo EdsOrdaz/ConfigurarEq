@@ -64,7 +64,6 @@ namespace ConfigurarEq
             this.check_importarkaspersky = new System.Windows.Forms.CheckBox();
             this.check_marcadores = new System.Windows.Forms.CheckBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.correo = new System.Windows.Forms.TextBox();
             this.nombrepc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,13 +73,14 @@ namespace ConfigurarEq
             this.txt_empresa = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel_txtbox = new System.Windows.Forms.Panel();
+            this.radio_correctivo = new System.Windows.Forms.RadioButton();
             this.txt_observaciones = new System.Windows.Forms.TextBox();
             this.radio_cambiarequipo = new System.Windows.Forms.RadioButton();
             this.radio_equiponuevo = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
             this.img_cargando = new System.Windows.Forms.PictureBox();
-            this.radio_correctivo = new System.Windows.Forms.RadioButton();
-            this.radio_preventivo = new System.Windows.Forms.RadioButton();
+            this.economico = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel_checks.SuspendLayout();
@@ -108,11 +108,11 @@ namespace ConfigurarEq
             this.ultimamod,
             this.existe});
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 141);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 159);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(561, 280);
+            this.dataGridView1.Size = new System.Drawing.Size(684, 262);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -171,7 +171,7 @@ namespace ConfigurarEq
             this.check_certificado.Location = new System.Drawing.Point(9, 54);
             this.check_certificado.Name = "check_certificado";
             this.check_certificado.Size = new System.Drawing.Size(113, 17);
-            this.check_certificado.TabIndex = 100;
+            this.check_certificado.TabIndex = 112;
             this.check_certificado.Text = "Instalar Certificado";
             this.check_certificado.UseVisualStyleBackColor = true;
             // 
@@ -183,7 +183,7 @@ namespace ConfigurarEq
             this.check_fondodepantalla.Location = new System.Drawing.Point(9, 77);
             this.check_fondodepantalla.Name = "check_fondodepantalla";
             this.check_fondodepantalla.Size = new System.Drawing.Size(161, 17);
-            this.check_fondodepantalla.TabIndex = 101;
+            this.check_fondodepantalla.TabIndex = 113;
             this.check_fondodepantalla.Text = "Establecer fondo de pantalla";
             this.check_fondodepantalla.UseVisualStyleBackColor = true;
             // 
@@ -192,10 +192,10 @@ namespace ConfigurarEq
             this.check_usuarioadmin.AutoSize = true;
             this.check_usuarioadmin.Checked = true;
             this.check_usuarioadmin.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_usuarioadmin.Location = new System.Drawing.Point(205, 31);
+            this.check_usuarioadmin.Location = new System.Drawing.Point(174, 54);
             this.check_usuarioadmin.Name = "check_usuarioadmin";
             this.check_usuarioadmin.Size = new System.Drawing.Size(135, 17);
-            this.check_usuarioadmin.TabIndex = 102;
+            this.check_usuarioadmin.TabIndex = 116;
             this.check_usuarioadmin.Text = "Habilitar Usuario Admin";
             this.check_usuarioadmin.UseVisualStyleBackColor = true;
             // 
@@ -204,10 +204,10 @@ namespace ConfigurarEq
             this.check_puntoderestauracion.AutoSize = true;
             this.check_puntoderestauracion.Checked = true;
             this.check_puntoderestauracion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_puntoderestauracion.Location = new System.Drawing.Point(205, 54);
+            this.check_puntoderestauracion.Location = new System.Drawing.Point(174, 77);
             this.check_puntoderestauracion.Name = "check_puntoderestauracion";
             this.check_puntoderestauracion.Size = new System.Drawing.Size(157, 17);
-            this.check_puntoderestauracion.TabIndex = 103;
+            this.check_puntoderestauracion.TabIndex = 117;
             this.check_puntoderestauracion.Text = "Crear punto de restauracion";
             this.check_puntoderestauracion.UseVisualStyleBackColor = true;
             // 
@@ -216,10 +216,10 @@ namespace ConfigurarEq
             this.check_actualizarkaspersky.AutoSize = true;
             this.check_actualizarkaspersky.Checked = true;
             this.check_actualizarkaspersky.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_actualizarkaspersky.Location = new System.Drawing.Point(388, 8);
+            this.check_actualizarkaspersky.Location = new System.Drawing.Point(337, 54);
             this.check_actualizarkaspersky.Name = "check_actualizarkaspersky";
             this.check_actualizarkaspersky.Size = new System.Drawing.Size(124, 17);
-            this.check_actualizarkaspersky.TabIndex = 104;
+            this.check_actualizarkaspersky.TabIndex = 120;
             this.check_actualizarkaspersky.Text = "Actualizar Kaspersky";
             this.check_actualizarkaspersky.UseVisualStyleBackColor = true;
             // 
@@ -228,10 +228,10 @@ namespace ConfigurarEq
             this.check_accesosoffice.AutoSize = true;
             this.check_accesosoffice.Checked = true;
             this.check_accesosoffice.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_accesosoffice.Location = new System.Drawing.Point(205, 8);
+            this.check_accesosoffice.Location = new System.Drawing.Point(174, 31);
             this.check_accesosoffice.Name = "check_accesosoffice";
             this.check_accesosoffice.Size = new System.Drawing.Size(153, 17);
-            this.check_accesosoffice.TabIndex = 110;
+            this.check_accesosoffice.TabIndex = 115;
             this.check_accesosoffice.Text = "Accesos directos de Office";
             this.check_accesosoffice.UseVisualStyleBackColor = true;
             // 
@@ -259,7 +259,7 @@ namespace ConfigurarEq
             this.masToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(573, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(689, 24);
             this.menuStrip1.TabIndex = 112;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -288,10 +288,10 @@ namespace ConfigurarEq
             // iniciar
             // 
             this.iniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iniciar.Location = new System.Drawing.Point(205, 123);
+            this.iniciar.Location = new System.Drawing.Point(280, 100);
             this.iniciar.Name = "iniciar";
             this.iniciar.Size = new System.Drawing.Size(143, 37);
-            this.iniciar.TabIndex = 113;
+            this.iniciar.TabIndex = 140;
             this.iniciar.Text = "Iniciar Configuracion";
             this.iniciar.UseVisualStyleBackColor = true;
             this.iniciar.Click += new System.EventHandler(this.iniciar_Click);
@@ -304,9 +304,9 @@ namespace ConfigurarEq
             // txt_instalando
             // 
             this.txt_instalando.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_instalando.Location = new System.Drawing.Point(3, 159);
+            this.txt_instalando.Location = new System.Drawing.Point(3, 175);
             this.txt_instalando.Name = "txt_instalando";
-            this.txt_instalando.Size = new System.Drawing.Size(561, 23);
+            this.txt_instalando.Size = new System.Drawing.Size(684, 23);
             this.txt_instalando.TabIndex = 114;
             this.txt_instalando.Text = "label2";
             this.txt_instalando.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -331,7 +331,7 @@ namespace ConfigurarEq
             this.panel_checks.Controls.Add(this.check_puntoderestauracion);
             this.panel_checks.Location = new System.Drawing.Point(3, 427);
             this.panel_checks.Name = "panel_checks";
-            this.panel_checks.Size = new System.Drawing.Size(556, 169);
+            this.panel_checks.Size = new System.Drawing.Size(686, 141);
             this.panel_checks.TabIndex = 116;
             // 
             // check_infeq
@@ -342,7 +342,7 @@ namespace ConfigurarEq
             this.check_infeq.Location = new System.Drawing.Point(9, 31);
             this.check_infeq.Name = "check_infeq";
             this.check_infeq.Size = new System.Drawing.Size(92, 17);
-            this.check_infeq.TabIndex = 123;
+            this.check_infeq.TabIndex = 111;
             this.check_infeq.Text = "Guardar InfEq";
             this.check_infeq.UseVisualStyleBackColor = true;
             // 
@@ -354,7 +354,7 @@ namespace ConfigurarEq
             this.check_cambiarnombreequipo.Location = new System.Drawing.Point(9, 8);
             this.check_cambiarnombreequipo.Name = "check_cambiarnombreequipo";
             this.check_cambiarnombreequipo.Size = new System.Drawing.Size(159, 17);
-            this.check_cambiarnombreequipo.TabIndex = 122;
+            this.check_cambiarnombreequipo.TabIndex = 110;
             this.check_cambiarnombreequipo.Text = "Cambiar Nombre Del Equipo";
             this.check_cambiarnombreequipo.UseVisualStyleBackColor = true;
             // 
@@ -363,11 +363,11 @@ namespace ConfigurarEq
             this.check_eliminarcarpeta.AutoSize = true;
             this.check_eliminarcarpeta.Checked = true;
             this.check_eliminarcarpeta.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_eliminarcarpeta.Location = new System.Drawing.Point(388, 100);
+            this.check_eliminarcarpeta.Location = new System.Drawing.Point(504, 54);
             this.check_eliminarcarpeta.Name = "check_eliminarcarpeta";
-            this.check_eliminarcarpeta.Size = new System.Drawing.Size(157, 17);
-            this.check_eliminarcarpeta.TabIndex = 121;
-            this.check_eliminarcarpeta.Text = "Eliminar Carpeta al Terminar";
+            this.check_eliminarcarpeta.Size = new System.Drawing.Size(165, 17);
+            this.check_eliminarcarpeta.TabIndex = 124;
+            this.check_eliminarcarpeta.Text = "Eliminar Programa al Terminar";
             this.check_eliminarcarpeta.UseVisualStyleBackColor = true;
             // 
             // check_windowsupdate
@@ -375,10 +375,10 @@ namespace ConfigurarEq
             this.check_windowsupdate.AutoSize = true;
             this.check_windowsupdate.Checked = true;
             this.check_windowsupdate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_windowsupdate.Location = new System.Drawing.Point(388, 77);
+            this.check_windowsupdate.Location = new System.Drawing.Point(504, 31);
             this.check_windowsupdate.Name = "check_windowsupdate";
             this.check_windowsupdate.Size = new System.Drawing.Size(150, 17);
-            this.check_windowsupdate.TabIndex = 120;
+            this.check_windowsupdate.TabIndex = 123;
             this.check_windowsupdate.Text = "Ejecutar Windows Update";
             this.check_windowsupdate.UseVisualStyleBackColor = true;
             // 
@@ -387,10 +387,10 @@ namespace ConfigurarEq
             this.check_activaroffice.AutoSize = true;
             this.check_activaroffice.Checked = true;
             this.check_activaroffice.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_activaroffice.Location = new System.Drawing.Point(388, 54);
+            this.check_activaroffice.Location = new System.Drawing.Point(504, 8);
             this.check_activaroffice.Name = "check_activaroffice";
             this.check_activaroffice.Size = new System.Drawing.Size(90, 17);
-            this.check_activaroffice.TabIndex = 119;
+            this.check_activaroffice.TabIndex = 122;
             this.check_activaroffice.Text = "Activar Office";
             this.check_activaroffice.UseVisualStyleBackColor = true;
             // 
@@ -399,10 +399,10 @@ namespace ConfigurarEq
             this.check_actualizartaskband.AutoSize = true;
             this.check_actualizartaskband.Checked = true;
             this.check_actualizartaskband.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_actualizartaskband.Location = new System.Drawing.Point(388, 31);
+            this.check_actualizartaskband.Location = new System.Drawing.Point(337, 77);
             this.check_actualizartaskband.Name = "check_actualizartaskband";
             this.check_actualizartaskband.Size = new System.Drawing.Size(151, 17);
-            this.check_actualizartaskband.TabIndex = 118;
+            this.check_actualizartaskband.TabIndex = 121;
             this.check_actualizartaskband.Text = "Actualizar Barra de Tareas";
             this.check_actualizartaskband.UseVisualStyleBackColor = true;
             // 
@@ -411,10 +411,10 @@ namespace ConfigurarEq
             this.check_activarkaspersky.AutoSize = true;
             this.check_activarkaspersky.Checked = true;
             this.check_activarkaspersky.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_activarkaspersky.Location = new System.Drawing.Point(205, 100);
+            this.check_activarkaspersky.Location = new System.Drawing.Point(337, 31);
             this.check_activarkaspersky.Name = "check_activarkaspersky";
             this.check_activarkaspersky.Size = new System.Drawing.Size(111, 17);
-            this.check_activarkaspersky.TabIndex = 117;
+            this.check_activarkaspersky.TabIndex = 119;
             this.check_activarkaspersky.Text = "Activar Kaspersky";
             this.check_activarkaspersky.UseVisualStyleBackColor = true;
             // 
@@ -423,10 +423,10 @@ namespace ConfigurarEq
             this.check_importarkaspersky.AutoSize = true;
             this.check_importarkaspersky.Checked = true;
             this.check_importarkaspersky.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_importarkaspersky.Location = new System.Drawing.Point(205, 77);
+            this.check_importarkaspersky.Location = new System.Drawing.Point(337, 8);
             this.check_importarkaspersky.Name = "check_importarkaspersky";
             this.check_importarkaspersky.Size = new System.Drawing.Size(151, 17);
-            this.check_importarkaspersky.TabIndex = 116;
+            this.check_importarkaspersky.TabIndex = 118;
             this.check_importarkaspersky.Text = "Importar config. Kaspersky";
             this.check_importarkaspersky.UseVisualStyleBackColor = true;
             // 
@@ -435,7 +435,7 @@ namespace ConfigurarEq
             this.check_marcadores.AutoSize = true;
             this.check_marcadores.Checked = true;
             this.check_marcadores.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_marcadores.Location = new System.Drawing.Point(9, 100);
+            this.check_marcadores.Location = new System.Drawing.Point(174, 8);
             this.check_marcadores.Name = "check_marcadores";
             this.check_marcadores.Size = new System.Drawing.Size(128, 17);
             this.check_marcadores.TabIndex = 114;
@@ -447,34 +447,27 @@ namespace ConfigurarEq
             this.richTextBox1.Location = new System.Drawing.Point(10, 185);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(537, 236);
-            this.richTextBox1.TabIndex = 3;
+            this.richTextBox1.Size = new System.Drawing.Size(660, 236);
+            this.richTextBox1.TabIndex = 201;
+            this.richTextBox1.TabStop = false;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
-            // correo
-            // 
-            this.correo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.correo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.correo.Location = new System.Drawing.Point(579, 257);
-            this.correo.Name = "correo";
-            this.correo.Size = new System.Drawing.Size(100, 20);
-            this.correo.TabIndex = 115;
             // 
             // nombrepc
             // 
             this.nombrepc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.nombrepc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombrepc.Location = new System.Drawing.Point(407, 5);
+            this.nombrepc.Location = new System.Drawing.Point(485, 5);
             this.nombrepc.Name = "nombrepc";
-            this.nombrepc.Size = new System.Drawing.Size(154, 22);
+            this.nombrepc.Size = new System.Drawing.Size(196, 22);
             this.nombrepc.TabIndex = 200;
+            this.nombrepc.TabStop = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(321, 8);
+            this.label2.Location = new System.Drawing.Point(399, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 16);
             this.label2.TabIndex = 119;
@@ -496,23 +489,25 @@ namespace ConfigurarEq
             this.txt_departamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_departamento.Location = new System.Drawing.Point(101, 35);
             this.txt_departamento.Name = "txt_departamento";
-            this.txt_departamento.Size = new System.Drawing.Size(118, 22);
+            this.txt_departamento.Size = new System.Drawing.Size(220, 22);
             this.txt_departamento.TabIndex = 201;
+            this.txt_departamento.TabStop = false;
             // 
             // txt_base
             // 
             this.txt_base.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txt_base.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_base.Location = new System.Drawing.Point(271, 35);
+            this.txt_base.Location = new System.Drawing.Point(363, 35);
             this.txt_base.Name = "txt_base";
-            this.txt_base.Size = new System.Drawing.Size(105, 22);
+            this.txt_base.Size = new System.Drawing.Size(132, 22);
             this.txt_base.TabIndex = 202;
+            this.txt_base.TabStop = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(223, 38);
+            this.label4.Location = new System.Drawing.Point(320, 38);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 16);
             this.label4.TabIndex = 122;
@@ -522,16 +517,17 @@ namespace ConfigurarEq
             // 
             this.txt_empresa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txt_empresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_empresa.Location = new System.Drawing.Point(457, 35);
+            this.txt_empresa.Location = new System.Drawing.Point(576, 35);
             this.txt_empresa.Name = "txt_empresa";
             this.txt_empresa.Size = new System.Drawing.Size(105, 22);
             this.txt_empresa.TabIndex = 125;
+            this.txt_empresa.TabStop = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(382, 38);
+            this.label5.Location = new System.Drawing.Point(501, 38);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 16);
             this.label5.TabIndex = 124;
@@ -539,9 +535,10 @@ namespace ConfigurarEq
             // 
             // panel_txtbox
             // 
+            this.panel_txtbox.Controls.Add(this.economico);
+            this.panel_txtbox.Controls.Add(this.label7);
             this.panel_txtbox.Controls.Add(this.radio_correctivo);
             this.panel_txtbox.Controls.Add(this.txt_observaciones);
-            this.panel_txtbox.Controls.Add(this.radio_preventivo);
             this.panel_txtbox.Controls.Add(this.radio_cambiarequipo);
             this.panel_txtbox.Controls.Add(this.radio_equiponuevo);
             this.panel_txtbox.Controls.Add(this.label6);
@@ -557,8 +554,19 @@ namespace ConfigurarEq
             this.panel_txtbox.Controls.Add(this.txt_departamento);
             this.panel_txtbox.Location = new System.Drawing.Point(3, 27);
             this.panel_txtbox.Name = "panel_txtbox";
-            this.panel_txtbox.Size = new System.Drawing.Size(567, 114);
+            this.panel_txtbox.Size = new System.Drawing.Size(684, 126);
             this.panel_txtbox.TabIndex = 126;
+            // 
+            // radio_correctivo
+            // 
+            this.radio_correctivo.AutoSize = true;
+            this.radio_correctivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radio_correctivo.Location = new System.Drawing.Point(610, 99);
+            this.radio_correctivo.Name = "radio_correctivo";
+            this.radio_correctivo.Size = new System.Drawing.Size(64, 20);
+            this.radio_correctivo.TabIndex = 128;
+            this.radio_correctivo.Text = "M.Corr";
+            this.radio_correctivo.UseVisualStyleBackColor = true;
             // 
             // txt_observaciones
             // 
@@ -566,14 +574,14 @@ namespace ConfigurarEq
             this.txt_observaciones.Location = new System.Drawing.Point(111, 64);
             this.txt_observaciones.Multiline = true;
             this.txt_observaciones.Name = "txt_observaciones";
-            this.txt_observaciones.Size = new System.Drawing.Size(290, 41);
-            this.txt_observaciones.TabIndex = 203;
+            this.txt_observaciones.Size = new System.Drawing.Size(301, 55);
+            this.txt_observaciones.TabIndex = 2;
             // 
             // radio_cambiarequipo
             // 
             this.radio_cambiarequipo.AutoSize = true;
             this.radio_cambiarequipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_cambiarequipo.Location = new System.Drawing.Point(419, 85);
+            this.radio_cambiarequipo.Location = new System.Drawing.Point(526, 99);
             this.radio_cambiarequipo.Name = "radio_cambiarequipo";
             this.radio_cambiarequipo.Size = new System.Drawing.Size(57, 20);
             this.radio_cambiarequipo.TabIndex = 129;
@@ -585,7 +593,7 @@ namespace ConfigurarEq
             this.radio_equiponuevo.AutoSize = true;
             this.radio_equiponuevo.Checked = true;
             this.radio_equiponuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_equiponuevo.Location = new System.Drawing.Point(419, 66);
+            this.radio_equiponuevo.Location = new System.Drawing.Point(438, 99);
             this.radio_equiponuevo.Name = "radio_equiponuevo";
             this.radio_equiponuevo.Size = new System.Drawing.Size(70, 20);
             this.radio_equiponuevo.TabIndex = 128;
@@ -612,43 +620,40 @@ namespace ConfigurarEq
             this.img_cargando.TabIndex = 115;
             this.img_cargando.TabStop = false;
             // 
-            // radio_correctivo
+            // economico
             // 
-            this.radio_correctivo.AutoSize = true;
-            this.radio_correctivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_correctivo.Location = new System.Drawing.Point(491, 85);
-            this.radio_correctivo.Name = "radio_correctivo";
-            this.radio_correctivo.Size = new System.Drawing.Size(64, 20);
-            this.radio_correctivo.TabIndex = 128;
-            this.radio_correctivo.TabStop = true;
-            this.radio_correctivo.Text = "M.Corr";
-            this.radio_correctivo.UseVisualStyleBackColor = true;
+            this.economico.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.economico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.economico.Location = new System.Drawing.Point(562, 63);
+            this.economico.Name = "economico";
+            this.economico.ReadOnly = true;
+            this.economico.Size = new System.Drawing.Size(119, 22);
+            this.economico.TabIndex = 204;
+            this.economico.TabStop = false;
             // 
-            // radio_preventivo
+            // label7
             // 
-            this.radio_preventivo.AutoSize = true;
-            this.radio_preventivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_preventivo.Location = new System.Drawing.Point(491, 67);
-            this.radio_preventivo.Name = "radio_preventivo";
-            this.radio_preventivo.Size = new System.Drawing.Size(70, 20);
-            this.radio_preventivo.TabIndex = 127;
-            this.radio_preventivo.TabStop = true;
-            this.radio_preventivo.Text = "M. Prev";
-            this.radio_preventivo.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(447, 66);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(109, 16);
+            this.label7.TabIndex = 203;
+            this.label7.Text = "Núm Economico:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 592);
+            this.ClientSize = new System.Drawing.Size(689, 570);
             this.Controls.Add(this.panel_txtbox);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel_checks);
             this.Controls.Add(this.txt_instalando);
             this.Controls.Add(this.img_cargando);
-            this.Controls.Add(this.correo);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -695,7 +700,6 @@ namespace ConfigurarEq
         private System.Windows.Forms.DataGridViewTextBoxColumn existe;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.CheckBox check_marcadores;
-        private System.Windows.Forms.TextBox correo;
         private System.Windows.Forms.CheckBox check_importarkaspersky;
         private System.Windows.Forms.CheckBox check_activarkaspersky;
         private System.Windows.Forms.CheckBox check_actualizartaskband;
@@ -720,7 +724,8 @@ namespace ConfigurarEq
         private System.Windows.Forms.CheckBox check_infeq;
         private System.Windows.Forms.TextBox txt_observaciones;
         private System.Windows.Forms.RadioButton radio_correctivo;
-        private System.Windows.Forms.RadioButton radio_preventivo;
+        private System.Windows.Forms.TextBox economico;
+        private System.Windows.Forms.Label label7;
     }
 }
 
