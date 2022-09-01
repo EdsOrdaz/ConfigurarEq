@@ -73,14 +73,14 @@ namespace ConfigurarEq
             this.txt_empresa = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel_txtbox = new System.Windows.Forms.Panel();
+            this.economico = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.radio_correctivo = new System.Windows.Forms.RadioButton();
             this.txt_observaciones = new System.Windows.Forms.TextBox();
             this.radio_cambiarequipo = new System.Windows.Forms.RadioButton();
             this.radio_equiponuevo = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
             this.img_cargando = new System.Windows.Forms.PictureBox();
-            this.economico = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel_checks.SuspendLayout();
@@ -259,7 +259,7 @@ namespace ConfigurarEq
             this.masToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(689, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(691, 24);
             this.menuStrip1.TabIndex = 112;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -444,10 +444,10 @@ namespace ConfigurarEq
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(10, 185);
+            this.richTextBox1.Location = new System.Drawing.Point(10, 201);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(660, 236);
+            this.richTextBox1.Size = new System.Drawing.Size(660, 220);
             this.richTextBox1.TabIndex = 201;
             this.richTextBox1.TabStop = false;
             this.richTextBox1.Text = "";
@@ -557,6 +557,27 @@ namespace ConfigurarEq
             this.panel_txtbox.Size = new System.Drawing.Size(684, 126);
             this.panel_txtbox.TabIndex = 126;
             // 
+            // economico
+            // 
+            this.economico.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.economico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.economico.Location = new System.Drawing.Point(562, 63);
+            this.economico.Name = "economico";
+            this.economico.ReadOnly = true;
+            this.economico.Size = new System.Drawing.Size(119, 22);
+            this.economico.TabIndex = 204;
+            this.economico.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(447, 66);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(109, 16);
+            this.label7.TabIndex = 203;
+            this.label7.Text = "Núm Economico:";
+            // 
             // radio_correctivo
             // 
             this.radio_correctivo.AutoSize = true;
@@ -614,38 +635,17 @@ namespace ConfigurarEq
             // img_cargando
             // 
             this.img_cargando.Image = global::ConfigurarEq.Properties.Resources.gears;
-            this.img_cargando.Location = new System.Drawing.Point(185, 201);
+            this.img_cargando.Location = new System.Drawing.Point(283, 201);
             this.img_cargando.Name = "img_cargando";
             this.img_cargando.Size = new System.Drawing.Size(183, 183);
             this.img_cargando.TabIndex = 115;
             this.img_cargando.TabStop = false;
             // 
-            // economico
-            // 
-            this.economico.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.economico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.economico.Location = new System.Drawing.Point(562, 63);
-            this.economico.Name = "economico";
-            this.economico.ReadOnly = true;
-            this.economico.Size = new System.Drawing.Size(119, 22);
-            this.economico.TabIndex = 204;
-            this.economico.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(447, 66);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 16);
-            this.label7.TabIndex = 203;
-            this.label7.Text = "Núm Economico:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 570);
+            this.ClientSize = new System.Drawing.Size(691, 570);
             this.Controls.Add(this.panel_txtbox);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel_checks);
